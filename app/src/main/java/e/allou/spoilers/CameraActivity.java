@@ -53,9 +53,6 @@ public class CameraActivity extends AppCompatActivity {
     private String spoilerSynopsis;
     private int justOne = 0;
 
-
-
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode)
@@ -221,6 +218,13 @@ public class CameraActivity extends AppCompatActivity {
         Intent intent = new Intent(this,LoadSpoiler.class);
              startActivity(intent);
 
+    }
+
+    public void launchMLKitApp(View view){
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.spoilerapp");
+        if (launchIntent != null) {
+            startActivity(launchIntent);//null pointer check in case package name was not found
+        }
     }
 
     public void accessParameter(View view) {
